@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aurea - Calcul du Cycle Menstruel</title>
+    <link rel="stylesheet" href="cm.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo-container">
+                <div class="logo-icon">
+                    <i class="fas fa-seedling"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>Aurea</h1>
+                    <p>Votre compagnon cycle menstruel</p>
+                </div>
+            </div>
+            <div class="header-info">
+                <p>Suivez votre cycle avec précision et simplicité</p>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="app-card">
+                <div class="card-header">
+                    <h2><i class="fas fa-calculator"></i> Calculez votre cycle</h2>
+                    <p>Obtenez les dates importantes de votre cycle menstruel</p>
+                </div>
+
+                <div class="form-container">
+                    <div class="input-group">
+                        <label for="cycleLength">
+                            <i class="fas fa-calendar-day"></i> Durée moyenne de votre cycle (en jours)
+                        </label>
+                        <div class="input-with-icon">
+                            <input type="number" id="cycleLength" min="20" max="45" value="28" placeholder="Exemple: 28">
+                            <span class="input-hint">Généralement entre 21 et 35 jours</span>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="lastperiod">
+                            <i class="fas fa-calendar-check"></i> Date du 1er jour de vos dernières règles
+                        </label>
+                        <div class="input-with-icon">
+                            <input type="date" id="lastperiod">
+                            <span class="input-hint">Cliquez pour sélectionner une date</span>
+                        </div>
+                    </div>
+
+                    <button class="calculate-btn" id="calculateBtn">
+                        <i class="fas fa-calculator"></i> Calculer mon cycle
+                    </button>
+
+                    <div class="info-box">
+                        <i class="fas fa-info-circle"></i>
+                        <p>Ces calculs sont basés sur des moyennes et peuvent varier d'une personne à l'autre. Consultez un professionnel de santé pour des informations médicales précises.</p>
+                    </div>
+                </div>
+
+                <div class="results-container" id="results">
+                    <h3><i class="fas fa-calendar-alt"></i> Résultats de votre cycle</h3>
+                    <p class="results-subtitle">Voici les dates importantes calculées pour votre prochain cycle :</p>
+                    
+                    <div class="results-grid">
+                        <div class="result-card" id="nextPeriodCard">
+                            <div class="result-icon period">
+                                <i class="fas fa-calendar"></i>
+                            </div>
+                            <h4>Prochaines règles</h4>
+                            <p class="result-date" id="nextPeriodDate">--/--/----</p>
+                            <p class="result-info">Date estimée du début de vos prochaines règles</p>
+                        </div>
+
+                        <div class="result-card" id="ovulationCard">
+                            <div class="result-icon ovulation">
+                                <i class="fas fa-egg"></i>
+                            </div>
+                            <h4>Ovulation</h4>
+                            <p class="result-date" id="ovulationDate">--/--/----</p>
+                            <p class="result-info">Jour le plus fertile de votre cycle</p>
+                        </div>
+
+                        <div class="result-card" id="fertileCard">
+                            <div class="result-icon fertile">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <h4>Période fertile</h4>
+                            <p class="result-date" id="fertilePeriodDate">--/--/---- au --/--/----</p>
+                            <p class="result-info">Fenêtre de fertilité optimale</p>
+                        </div>
+                    </div>
+                    
+                    <div class="cycle-visualization">
+                        <h4><i class="fas fa-chart-line"></i> Visualisation de votre cycle</h4>
+                        <div class="cycle-timeline">
+                            <div class="timeline-start">
+                                <span class="timeline-label">Dernières règles</span>
+                                <span class="timeline-date" id="lastPeriodDate">--/--</span>
+                            </div>
+                            <div class="timeline-bar">
+                                <div class="timeline-phase fertile-phase" id="fertilePhase"></div>
+                                <div class="timeline-marker ovulation-marker" id="ovulationMarker">
+                                    <span>Ovulation</span>
+                                </div>
+                            </div>
+                            <div class="timeline-end">
+                                <span class="timeline-label">Prochaines règles</span>
+                                <span class="timeline-date" id="nextPeriodTimelineDate">--/--</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tips-card">
+                <h3><i class="fas fa-lightbulb"></i> Conseils pour suivre votre cycle</h3>
+                <div class="tips-list">
+                    <div class="tip">
+                        <i class="fas fa-clipboard-check"></i>
+                        <p>Notez régulièrement les dates de début de vos règles pour une meilleure précision</p>
+                    </div>
+                    <div class="tip">
+                        <i class="fas fa-temperature-high"></i>
+                        <p>La température corporelle basale peut aider à identifier plus précisément l'ovulation</p>
+                    </div>
+                    <div class="tip">
+                        <i class="fas fa-stethoscope"></i>
+                        <p>Consultez un professionnel de santé pour toute question sur votre cycle</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>Aurea &copy; <span id="currentYear"></span> - Calculatrice de cycle menstruel</p>
+            <p class="disclaimer">Cet outil fournit des estimations basées sur des moyennes et ne remplace pas un avis médical professionnel.</p>
+        </footer>
+    </div>
+
+    <script src="cm.js"></script>
+</body>
+</html>
